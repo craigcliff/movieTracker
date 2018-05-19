@@ -44,8 +44,8 @@ return {
         },
         { text: 'Date Added', value: 'date' },
         { text: 'Poster', value: 'poster',align: 'left' },
-        { text: 'Plot', value: 'plot' },
-        { text: 'Actors', value: 'actors' },
+        { text: 'Plot', value: 'plot',align: 'left' },
+        { text: 'Actors', value: 'actors',align: 'left' },
         { text: 'Run Time', value: 'runTime' },
         { text: 'Rating', value: 'rating' }
       ],
