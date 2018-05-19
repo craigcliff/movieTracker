@@ -1,14 +1,27 @@
 <template>
 
     <v-card>
+      <v-card-title>
+      Movies
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="search"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+</v-card-title>
+
       <v-data-table
                 v-bind:headers="headers"
                 :items="items"
+                :search="search"
                 hide-actions
                 class="elevation-1"
                 >
     <template slot="items" slot-scope="props">
-      <td class = "titleTd">{{ props.item.Title }}</td>
+      <td class = "">{{ props.item.Title }}</td>
       
       <td class="text-xs-left "  >
         <div class = "post-thumbnail" :style="{backgroundImage:'url('+ props.item.Poster + ')'}"> </div>
@@ -22,6 +35,9 @@
       <td class="text-xs-left">{{ props.item.Rating }}</td>
       <td class="text-xs-left">{{ props.item.DateAdded }}</td>
     </template>
+      <v-alert slot="no-results" :value="true" color="error" icon="warning">
+        Your search for "{{ search }}" found no results.
+</v-alert>
   </v-data-table>
 
   </v-card>
@@ -38,6 +54,7 @@ export default {
 
 data(){
 return {
+  search: '',
   headers: [
         {
           text:'Title',
@@ -126,14 +143,15 @@ width: 100px;
 
 }
 
-.titleTd{
-
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size:12px;
-
 
 }
+
+.text-xs-left{
+
+margin: 3px !important;
+padding: 3px !important;
+
+
 }
 
 .main-section{
