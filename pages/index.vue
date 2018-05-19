@@ -80,7 +80,7 @@ return {
 
             }
         console.log(postsArray[1]);
-        this.items = postsArray;
+        this.items = postsArray.reverse();
         
 
       }).catch(function (error) {
