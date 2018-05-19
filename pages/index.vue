@@ -1,6 +1,6 @@
 <template>
-  <v-layout column justify-center align-center>
 
+    <v-card>
       <v-data-table
                 v-bind:headers="headers"
                 :items="items"
@@ -8,22 +8,25 @@
                 class="elevation-1"
                 >
     <template slot="items" slot-scope="props">
-      <td>{{ props.item.Title }}</td>
-      <td class="text-xs-right">{{ props.item.DateAdded }}</td>
-      <td class="text-xs-right "  >
+      <td class = "titleTd">{{ props.item.Title }}</td>
+      
+      <td class="text-xs-left "  >
         <div class = "post-thumbnail" :style="{backgroundImage:'url('+ props.item.Poster + ')'}"> </div>
 
 
 
       </td>
-      <td class="text-xs-right">{{ props.item.Plot }}</td>
-      <td class="text-xs-right">{{ props.item.Actors }}</td>
-      <td class="text-xs-right">{{ props.item.RunTime }}</td>
-      <td class="text-xs-right">{{ props.item.Rating }}</td>
+      <td class="text-xs-left">{{ props.item.Plot }}</td>
+      <td class="text-xs-left">{{ props.item.Actors }}</td>
+      <td class="text-xs-left">{{ props.item.RunTime }}</td>
+      <td class="text-xs-left">{{ props.item.Rating }}</td>
+      <td class="text-xs-left">{{ props.item.DateAdded }}</td>
     </template>
   </v-data-table>
-   
-  </v-layout>
+
+  </v-card>
+ 
+  
 </template>
 
 <script>
@@ -42,12 +45,13 @@ return {
           sortable: false,
           value:'title'
         },
-        { text: 'Date Added', value: 'date' },
+    
         { text: 'Poster', value: 'poster',align: 'left' },
         { text: 'Plot', value: 'plot',align: 'left' },
         { text: 'Actors', value: 'actors',align: 'left' },
-        { text: 'Run Time', value: 'runTime' },
-        { text: 'Rating', value: 'rating' }
+        { text: 'Run Time', value: 'runTime',align: 'left' },
+        { text: 'IMDB Rating', value: 'rating',align: 'left' },
+            { text: 'Date Added', value: 'date',align: 'left' }
       ],
 
  items: []
@@ -104,10 +108,37 @@ console.log(this.items);
 
 height: 200px;
 width: 150px;
-margin: 10px;
+margin-top: 5px;
+margin-bottom: 5px;
  background-repeat: no-repeat;
     background-size: contain;
 
+    
+
+}
+
+@media screen and (max-width: 450px){
+.post-thumbnail{
+
+height: 100px;
+width: 100px;
+
+
+}
+
+.titleTd{
+
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size:12px;
+
+
+}
+}
+
+.main-section{
+
+  
 }
 
 </style>
