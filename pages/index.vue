@@ -17,8 +17,10 @@
                 v-bind:headers="headers"
                 :items="items"
                 :search="search"
-                hide-actions
-                class="elevation-1"
+                v-bind:pagination.sync="pagination"
+                
+              
+               
                 >
     <template slot="items" slot-scope="props">
       <td class = "">{{ props.item.Title }}</td>
@@ -54,21 +56,22 @@ export default {
 
 data(){
 return {
+pagination : {'sortBy': 'DateAdded', 'descending': true, 'rowsPerPage': -1},
   search: '',
   headers: [
         {
           text:'Title',
           align: 'left',
-          sortable: false,
-          value:'title'
+         
+          value:'Title'
         },
     
-        { text: 'Poster', value: 'poster',align: 'left' },
-        { text: 'Plot', value: 'plot',align: 'left' },
-        { text: 'Actors', value: 'actors',align: 'left' },
-        { text: 'Run Time', value: 'runTime',align: 'left' },
-        { text: 'IMDB Rating', value: 'rating',align: 'left' },
-            { text: 'Date Added', value: 'date',align: 'left' }
+        { text: 'Poster', value: 'Poster',align: 'left' },
+        { text: 'Plot', value: 'Plot',align: 'left' },
+        { text: 'Actors', value: 'Actors',align: 'left' },
+        { text: 'Run Time', value: 'RunTime',align: 'left' },
+        { text: 'IMDB Rating', value: 'Rating',align: 'left' },
+            { text: 'Date Added', value: 'DateAdded',align: 'left' }
       ],
 
  items: []
@@ -101,7 +104,7 @@ return {
 
             }
         console.log(postsArray[1]);
-        this.items = postsArray.reverse();
+        this.items = postsArray;
         
 
       }).catch(function (error) {
