@@ -1,9 +1,11 @@
-<template>
+<template >
 
-    <v-card>
+    <v-card >
       <v-card-title>
-      Movies
+      
       <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
+      
       <v-text-field
         v-model="search"
         append-icon="search"
@@ -14,6 +16,7 @@
 </v-card-title>
 
       <v-data-table
+      class="blue darken-3"
                 v-bind:headers="headers"
                 :items="items"
                 :search="search"
@@ -23,7 +26,7 @@
                
                 >
     <template slot="items" slot-scope="props">
-      <td class = "">{{ props.item.Title }}</td>
+      <td class = "text-xs-left">{{ props.item.Title }}</td>
       
       <td class="text-xs-left "  >
         <div class = "post-thumbnail" :style="{backgroundImage:'url('+ props.item.Poster + ')'}"> </div>
@@ -140,8 +143,8 @@ margin-bottom: 5px;
 @media screen and (max-width: 450px){
 .post-thumbnail{
 
-height: 100px;
-width: 100px;
+height: 150px;
+width: 120px;
 
 
 }
@@ -149,13 +152,7 @@ width: 100px;
 
 }
 
-.text-xs-left{
 
-margin: 3px !important;
-padding: 3px !important;
-
-
-}
 
 .main-section{
 
